@@ -56,7 +56,7 @@ setup(
     # simple. Or you can use find_packages().
     packages=find_packages(exclude=['contrib', 'docs', 'tests', 'scripts', 'build', 'dist']),
     package_data={
-        'plivo': [],
+        'plivo': ['sms/init/db_init.sql'],
         '': ['VERSION']
     },
 
