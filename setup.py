@@ -17,6 +17,7 @@ with open('VERSION', encoding='utf-8') as f:
 dependencies = [
     'Flask==0.12',
     'Flask-SQLAlchemy==2.1',
+    'Flask-Redis==0.3.0',
     'uwsgi==1.9.17'
 ]
 
