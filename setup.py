@@ -18,6 +18,9 @@ dependencies = [
     'Flask==0.12',
     'Flask-SQLAlchemy==2.1',
     'Flask-Redis==0.3.0',
+    'Flask-HTTPAuth==3.2.2',
+    'Flask-Inputs==0.2.0',
+    'pg8000==1.10.6',
     'uwsgi==1.9.17'
 ]
 

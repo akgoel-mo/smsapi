@@ -21,6 +21,13 @@ redis_store.init_app(app)
 db = SQLAlchemy(app)
 
 
+def register_blueprints():
+    # Local imports required to avoid cyclic dependenci
+    from plivo.sms.resource import sms_blueprint
+    app.register_blueprint(sms_blueprint)
+
+register_blueprints()
+
 if __name__ == '__main__':
     handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=1)
     handler.setLevel(logging.INFO)

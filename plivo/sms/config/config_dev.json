@@ -1,10 +1,10 @@
 {
     "connections": {
         "postgres": {
-            "url": "postgres://zjlodpsrsbjolo:bbd363e7b9a8e55bc861a53a907ec24ae5cceb485587c4e3171b36103a76422e@ec2-50-17-207-16.compute-1.amazonaws.com:5432/dmk4it0o4dte9"
+            "url": "postgres+pg8000://akshaygoel@localhost/plivo"
         },
         "redis": {
-            "url": "redis://h:p3c474e26beff086ef3cabafd7408f998121f272108431c87088b7cd4995422ce@ec2-34-194-51-203.compute-1.amazonaws.com:16199"
+            "url": "redis://localhost:6379"
         }
     }
 }
