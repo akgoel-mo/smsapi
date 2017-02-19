@@ -1,6 +1,8 @@
 import json
 import pkg_resources
+import sys
 import threading
+import traceback
 
 
 class SingletonMetaClass(type):
@@ -18,6 +20,13 @@ class SingletonMetaClass(type):
 
 
 class CommonUtils(object):
+    @staticmethod
+    def view_traceback():
+        ex_type, ex, tb = sys.exc_info()
+        traceback_string = traceback.format_exc(tb)
+        del tb
+        return traceback_string
+
     @staticmethod
     def deepMergeDictionaries(dict_source, dict_to_merge):
         for key in dict_to_merge:
@@ -38,3 +47,13 @@ class CommonUtils(object):
     @staticmethod
     def readResourceString(module, path):
         return pkg_resources.resource_string(module, path)
+
+
+class RedisKeyGenerator():
+    @staticmethod
+    def generateBlockedMessageKey(sms_from, sms_to):
+        return ":".join(["blockedpair", sms_from, sms_to])
+
+    @staticmethod
+    def generateRateLimitKey(sms_from):
+        return ":".join(["ratelimit", sms_from])

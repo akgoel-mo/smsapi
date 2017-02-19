@@ -6,5 +6,13 @@
         "redis": {
             "url": "redis://h:p3c474e26beff086ef3cabafd7408f998121f272108431c87088b7cd4995422ce@ec2-34-194-51-203.compute-1.amazonaws.com:16199"
         }
+    },
+    "block_settings": {
+        "patterns": ["STOP"],
+        "secs_to_block": 14400
+    },
+    "rate_limiting": {
+        "request_count_threshold": 15,
+        "limit_reset_secs": 86400
     }
 }

@@ -27,7 +27,7 @@ class ConfigProvider(object):
     __metaclass__ = SingletonMetaClass
 
     def __init__(self):
-        env = Env.fromStr(os.environ.get('MOE_DEPLOYMENT_ENV') or 'dev')
+        env = Env.fromStr(os.environ.get('DEPLOYMENT_ENV') or 'dev')
         config_file = 'config.json'
         self.config = CommonUtils.readResourceJson(__name__, config_file)
         if env != Env.PROD:
@@ -43,3 +43,15 @@ class ConfigProvider(object):
 
     def getRedisConfig(self):
         return self.config.get('connections', {}).get('redis', {})
+
+    def getBlockedPatterns(self):
+        return self.config.get('block_settings', {}).get('patterns', [])
+
+    def getBlockTimeSecs(self):
+        return self.config.get('block_settings', {}).get('secs_to_block', 0)
+
+    def getRequestCountThreshold(self):
+        return self.config.get('rate_limiting', {}).get('request_count_threshold', 50)
+
+    def getRateLimitResetSecs(self):
+        return self.config.get('rate_limiting', {}).get('limit_reset_secs', 0)
