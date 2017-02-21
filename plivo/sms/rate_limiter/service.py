@@ -16,7 +16,7 @@ class RateLimitService(object):
         if current_count is None:
             redis_store.set(redis_key, 1, ex=ConfigProvider().getRateLimitResetSecs(), nx=True, xx=False)
             current_count = 1
-        if int(current_count) >= ConfigProvider().getRequestCountThreshold():
+        if int(current_count) > ConfigProvider().getRequestCountThreshold():
             return True
         else:
             redis_store.incr(redis_key, 1)

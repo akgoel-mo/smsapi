@@ -12,7 +12,7 @@
         "secs_to_block": 14400
     },
     "rate_limiting": {
-        "request_count_threshold": 15,
+        "request_count_threshold": 50,
         "limit_reset_secs": 86400
     }
 }

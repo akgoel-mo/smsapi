@@ -19,7 +19,6 @@ def create_app():
 
 
 def http_error(e):
-    app.logger.exception("http error")
     return jsonify(dict(error=e.description, message=e.message)), e.code
 
 
