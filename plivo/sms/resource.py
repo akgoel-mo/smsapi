@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, g
 from plivo.sms.app import app
 from plivo.sms.auth import auth
-from plivo.sms.block.service import InboundMessageBlocker, OutboundMessageBlocker
+from plivo.sms.blocker.service import InboundMessageBlocker, OutboundMessageBlocker
 from plivo.sms.rate_limiter.service import RateLimitService
 from plivo.sms.validators import SmsRequestJsonValidator, validate_phone_number
 

@@ -2,6 +2,8 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask, jsonify
+from flask_redis import FlaskRedis
+from flask_sqlalchemy import SQLAlchemy
 
 from plivo.sms.config.provider import ConfigProvider
 
@@ -17,6 +19,7 @@ def create_app():
 
 
 def http_error(e):
+    app.logger.exception("http error")
     return jsonify(dict(error=e.description, message=e.message)), e.code
 
 
@@ -27,6 +30,11 @@ def generic_error(e):
 
 app = create_app()
 app.logger.info("Creating application with ENV: {0}".format(str(ConfigProvider().getEnv())))
+
+db = SQLAlchemy(app)
+redis_store = FlaskRedis()
+redis_store.init_app(app)
+
 app.register_error_handler(405, http_error)
 app.register_error_handler(401, http_error)
 app.register_error_handler(403, http_error)

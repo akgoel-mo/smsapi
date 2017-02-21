@@ -1,5 +1,5 @@
 from plivo.sms.config.provider import ConfigProvider
-from plivo.sms.settings import redis_store
+from plivo.sms.app import redis_store
 from plivo.sms.utils import RedisKeyGenerator
 
 
@@ -15,6 +15,7 @@ class RateLimitService(object):
         current_count = redis_store.get(redis_key)
         if current_count is None:
             redis_store.set(redis_key, 1, ex=ConfigProvider().getRateLimitResetSecs(), nx=True, xx=False)
+            current_count = 1
         if int(current_count) >= ConfigProvider().getRequestCountThreshold():
             return True
         else:

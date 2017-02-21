@@ -1,4 +1,4 @@
-from plivo.sms.settings import db
+from plivo.sms.app import db
 
 
 class PhoneNumber(db.Model):

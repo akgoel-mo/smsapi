@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod
 
 from plivo.sms.config.provider import ConfigProvider
 from plivo.sms.utils import RedisKeyGenerator
-from plivo.sms.settings import redis_store
+from plivo.sms.app import redis_store
 
 
 class MessageBlocker(object):

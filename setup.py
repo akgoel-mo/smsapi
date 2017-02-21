@@ -22,7 +22,7 @@ dependencies = [
     'Flask-Inputs==0.2.0',
     'pg8000==1.10.6',
     'jsonschema==2.6.0',
-    'uwsgi==1.9.17'
+    'uwsgi==2.0.14'
 ]
 
 test_dependencies = [
@@ -61,7 +61,7 @@ setup(
     # simple. Or you can use find_packages().
     packages=find_packages(exclude=['contrib', 'docs', 'tests', 'scripts', 'build', 'dist']),
     package_data={
-        'plivo': ['sms/init/db_init.sql'],
+        'plivo': ['sms/init/db_init.sql', 'sms/config/*.json'],
         '': ['VERSION']
     },
 
