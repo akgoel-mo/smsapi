@@ -22,7 +22,7 @@ dependencies = [
     'Flask-Inputs==0.2.0',
     'pg8000==1.10.6',
     'jsonschema==2.6.0',
-    'uwsgi==1.9.17'
+    'gunicorn'
 ]
 
 test_dependencies = [
