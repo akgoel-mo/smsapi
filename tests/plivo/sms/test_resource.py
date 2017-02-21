@@ -2,6 +2,7 @@ import json
 import unittest
 from base64 import b64encode
 from plivo.sms.app import app
+from plivo.sms.config.provider import ConfigProvider
 
 
 class SmsInboundTest(unittest.TestCase):
@@ -208,7 +209,7 @@ class SmsInboundTest(unittest.TestCase):
         from_number = '4924195509192'
         to_number = '3253280312'
         user_and_pass = b64encode(b"plivo1:20S0KPNOIM").decode("ascii")
-        for i in range(50):
+        for i in range(ConfigProvider().getRequestCountThreshold()):
             response_outbound = self.app.post('/sms/outbound', data=json.dumps({
                 'to': to_number,
                 'from': from_number,
